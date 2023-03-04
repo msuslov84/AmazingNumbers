@@ -54,7 +54,7 @@ public enum NumberType {
         return resultList;
     }
 
-    private static NumberType getExclusiveType(NumberType type) {
+    static NumberType getExclusiveType(NumberType type) {
         switch (type) {
             case ODD:
                 return EVEN;

@@ -16,11 +16,6 @@ public class NumUtil {
     private NumUtil() {
     }
 
-    public static boolean numberMatchProperties(long number, List<NumberType> properties) {
-        ArrayList<NumberType> numberTypes = new ArrayList<>();
-        return properties.stream().allMatch(p -> numberMatchProperty(number, p));
-    }
-
     public static boolean numberMatchConditions(long number, List<NumberType> includeProps, List<NumberType> excludeProps) {
         return includeProps.stream().allMatch(p -> numberMatchProperty(number, p)) &&
                 excludeProps.stream().noneMatch(p -> numberMatchProperty(number, p));
@@ -139,19 +134,19 @@ public class NumUtil {
         return true;
     }
 
-    public static int countDigits(long number) {
-        if (number < 10) {
-            return 1;
-        }
-        return 1 + countDigits(number / 10);
-    }
-
     public static boolean isSad(long number) {
         return !isHappyNumber(number, new ArrayList<>(List.of(number)));
     }
 
     public static boolean isHappy(long number) {
         return isHappyNumber(number, new ArrayList<>(List.of(number)));
+    }
+
+    public static int countDigits(long number) {
+        if (number < 10) {
+            return 1;
+        }
+        return 1 + countDigits(number / 10);
     }
 
     private static boolean isHappyNumber(long currentNum, List<Long> oldNumbers) {
